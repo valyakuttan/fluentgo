@@ -1,10 +1,7 @@
 package main
 
-import (
-	"gotour/concurrency"
-)
+import "gotour/idiomaticgo"
 
 func main() {
-	concurrency.Webcrawler()
-
+	idiomaticgo.ShareMemory()
 }

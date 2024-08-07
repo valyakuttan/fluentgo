@@ -39,7 +39,8 @@ func sum(s []int, c chan int) {
 func ChannelsExample() {
 	s := []int{7, 2, 8, -9, 4, 0}
 
-	c := make(chan int)
+	c := make(chan int) // send channel
+
 	go sum(s[:len(s)/2], c)
 	go sum(s[len(s)/2:], c)
 	x, y := <-c, <-c // receive from c

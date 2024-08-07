@@ -53,25 +53,33 @@ func Walk(t *Tree, ch chan int) {
 
 // Same determines whether the trees
 // t1 and t2 contain the same values.
-func Same(t1, t2 *Tree) bool {
-	ch1, ch2 := make(chan int), make(chan int)
+func Same(t1, t2 *Tree, size int) bool {
+	ch1, ch2 := make(chan int, size), make(chan int, size)
 
 	go Walk(t1, ch1)
 	go Walk(t2, ch2)
 
-	if <-ch1 == <-ch2 {
-		return true
-	} else {
-		return false
-	}
+	result := make(chan bool, 1)
+
+	go func() {
+		for i := 0; i < size; i++ {
+			if <-ch1 != <-ch2 {
+				result <- false
+				return
+			}
+		}
+		result <- true
+	}()
+
+	return <-result
 }
 
 func ExerciseEqBTree() {
 
-	x55 := Same(New(5), New(5))
-	x56 := Same(New(5), New(6))
-	x65 := Same(New(6), New(5))
-	x66 := Same(New(6), New(6))
+	x55 := Same(New(5), New(5), 10)
+	x56 := Same(New(5), New(6), 10)
+	x65 := Same(New(6), New(5), 10)
+	x66 := Same(New(6), New(6), 10)
 
 	fmt.Println(x55, x56, x65, x66)
 }
