@@ -1,4 +1,4 @@
-package arrays
+package arraysandslices
 
 /*
 Appending to a slice

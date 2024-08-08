@@ -1,4 +1,4 @@
-package arrays
+package arraysandslices
 
 /*
  A slice has both a length and a capacity.

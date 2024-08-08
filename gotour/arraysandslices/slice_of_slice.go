@@ -1,4 +1,4 @@
-package arrays
+package arraysandslices
 
 import (
 	"fmt"

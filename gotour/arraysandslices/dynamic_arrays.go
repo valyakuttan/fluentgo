@@ -1,4 +1,5 @@
-package arrays
+package arraysandslices
+
 
 /*
  Slices can be created with the built-in make function; this is how you create dynamically-sized arrays.

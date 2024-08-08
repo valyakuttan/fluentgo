@@ -1,7 +1,9 @@
 package main
 
-import "gotour/idiomaticgo"
+import (
+	"gotour/concurrency"
+)
 
 func main() {
-	idiomaticgo.ShareMemory()
+	concurrency.BasicSync()
 }
